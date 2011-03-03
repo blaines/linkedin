@@ -1,3 +1,5 @@
+require 'multi_json'
+require 'hashie'
 require 'oauth'
 require 'nokogiri'
 

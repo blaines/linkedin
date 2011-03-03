@@ -2,9 +2,8 @@ module LinkedIn
   class Connections < LinkedIn::Base
 
     def connections
-      @connections ||= @doc.xpath('//connections').children.inject([]) do |list, profile|
-        list << Profile.new(Nokogiri::XML(profile.to_xml)) unless profile.blank?
-        list
+      @doc.map do |profile|
+        profile = Profile.new(profile) unless profile.blank?
       end
     end
 

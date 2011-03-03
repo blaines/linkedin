@@ -26,7 +26,7 @@ module LinkedIn
         path +=":(#{fields.map{ |f| f.to_s.gsub("_","-") }.join(',')})"
       end
 
-      Profile.from_xml(get(path))
+      Profile.from_json(get(path))
     end
 
     def connections(options={})
@@ -39,7 +39,7 @@ module LinkedIn
         path +=":(#{fields.map{ |f| f.to_s.gsub("_","-") }.join(',')})"
       end
 
-      Connections.from_xml(get(path)).profiles
+      Connections.from_json(get(path)).profiles
     end
 
     def search(options={})
@@ -47,7 +47,7 @@ module LinkedIn
       options = { :keywords => options } if options.is_a?(String)
       options = format_options_for_query(options)
 
-      People.from_xml(get(to_uri(path, options)))
+      People.from_json(get(to_uri(path, options)))
     end
 
     def current_status
@@ -78,7 +78,7 @@ module LinkedIn
 
     def likes(network_key)
       path = "/people/~/network/updates/key=#{network_key}/likes"
-      Likes.from_xml(get(path)).likes
+      Likes.from_json(get(path)).likes
     end
 
     def update_network(message)
@@ -117,7 +117,7 @@ module LinkedIn
 
     def network_updates(options={})
       path = "/people/~/network"
-      Network.from_xml(get(to_uri(path, options)))
+      Network.from_json(get(to_uri(path, options)))
     end
 
     # helpful in making authenticated calls and writing the

@@ -1,32 +1,33 @@
 module LinkedIn
 
   module RequestHelpers
+    
+    DEFAULT_OPTIONS = {'x-li-format' => 'json'}
 
     def get(path, options={})
       path = "/v1#{path}"
-      response = access_token.get(path, options)
+      response = access_token.get(path, DEFAULT_OPTIONS.merge(options))
       raise_errors(response)
       response.body
     end
 
     def post(path, body='', options={})
       path = "/v1#{path}"
-      default_options = { 'Content-Type' => 'application/xml' }
-      response = access_token.post(path, body, default_options.merge(options))
+      response = access_token.post(path, body, DEFAULT_OPTIONS.merge(options))
       raise_errors(response)
       response
     end
 
     def put(path, body, options={})
       path = "/v1#{path}"
-      response = access_token.put(path, body, options)
+      response = access_token.put(path, body, DEFAULT_OPTIONS.merge(options))
       raise_errors(response)
       response
     end
 
     def delete(path, options={})
       path = "/v1#{path}"
-      response = access_token.delete(path, options)
+      response = access_token.delete(path, DEFAULT_OPTIONS.merge(options))
       raise_errors(response)
       response
     end
@@ -38,13 +39,13 @@ module LinkedIn
         # in the HTTP answer (thankfully).
         case response.code.to_i
         when 400
-          data = LinkedIn::Error.from_xml(response.body)
+          data = LinkedIn::Error.from_json(response.body)
           raise RateLimitExceeded.new(data), "(#{response.code}): #{response.message} - #{data.code if data}"
         when 401
-          data = LinkedIn::Error.from_xml(response.body)
+          data = LinkedIn::Error.from_json(response.body)
           raise Unauthorized.new(data), "(#{response.code}): #{response.message} - #{data.code if data}"
         when 403
-          data = LinkedIn::Error.from_xml(response.body)
+          data = LinkedIn::Error.from_json(response.body)
           raise General.new(data), "(#{response.code}): #{response.message} - #{data.code if data}"
         when 404
           raise NotFound, "(#{response.code}): #{response.message}"
