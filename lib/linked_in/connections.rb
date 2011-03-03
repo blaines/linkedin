@@ -1,14 +1,9 @@
 module LinkedIn
-  class Connections < LinkedIn::Base
+  class Connections
 
-    def connections
-      @doc.map do |profile|
-        profile = Profile.new(profile) unless profile.blank?
-      end
-    end
-
-    def profiles
-      connections
+    def initialize(*args,&block)
+      @profiles = args.first.class == Array ? args.shift.map {|p| Profile.new(p['siteStandardProfileRequest'])} : args.shift
+      return @profiles
     end
 
   end

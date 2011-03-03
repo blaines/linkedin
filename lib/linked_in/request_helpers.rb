@@ -39,13 +39,13 @@ module LinkedIn
         # in the HTTP answer (thankfully).
         case response.code.to_i
         when 400
-          data = LinkedIn::Error.from_json(response.body)
+          data = LinkedIn::Error.new(response.body)
           raise RateLimitExceeded.new(data), "(#{response.code}): #{response.message} - #{data.code if data}"
         when 401
-          data = LinkedIn::Error.from_json(response.body)
+          data = LinkedIn::Error.new(response.body)
           raise Unauthorized.new(data), "(#{response.code}): #{response.message} - #{data.code if data}"
         when 403
-          data = LinkedIn::Error.from_json(response.body)
+          data = LinkedIn::Error.new(response.body)
           raise General.new(data), "(#{response.code}): #{response.message} - #{data.code if data}"
         when 404
           raise NotFound, "(#{response.code}): #{response.message}"

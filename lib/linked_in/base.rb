@@ -1,13 +1,12 @@
 module LinkedIn
-  class Base
-
-    def self.from_json(doc)
-      new(Hashie::Mash.new(MultiJson.decode(doc)))
+  class Base < Hashie::Trash
+    
+    property :error_code, :from => :errorCode
+    
+    def initialize(*args,&block)
+      hash = args.first.class == String ? MultiJson.decode(args.shift) : args.shift
+      super(hash,*args,&block)
     end
-
-    def initialize(doc)
-      @doc = doc
-    end
-
+    
   end
 end
