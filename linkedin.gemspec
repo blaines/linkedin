@@ -14,42 +14,7 @@ Gem::Specification.new do |s|
     "LICENSE",
      "README.markdown"
   ]
-  s.files = [
-    "LICENSE",
-     "README.markdown",
-     "Rakefile",
-     "VERSION",
-     "lib/linked_in/api_standard_profile_request.rb",
-     "lib/linked_in/client.rb",
-     "lib/linked_in/company.rb",
-     "lib/linked_in/connections.rb",
-     "lib/linked_in/country.rb",
-     "lib/linked_in/education.rb",
-     "lib/linked_in/error.rb",
-     "lib/linked_in/group.rb",
-     "lib/linked_in/location.rb",
-     "lib/linked_in/network.rb",
-     "lib/linked_in/people.rb",
-     "lib/linked_in/position.rb",
-     "lib/linked_in/profile.rb",
-     "lib/linked_in/update.rb",
-     "lib/linked_in/url_resource.rb",
-     "lib/linkedin.rb",
-     "test/client_test.rb",
-     "test/fixtures/blank.xml",
-     "test/fixtures/connections.xml",
-     "test/fixtures/error.xml",
-     "test/fixtures/network_status_with_group.xml",
-     "test/fixtures/network_statuses.xml",
-     "test/fixtures/picture_updates.xml",
-     "test/fixtures/profile.xml",
-     "test/fixtures/profile_full.xml",
-     "test/fixtures/profile_with_positions.xml",
-     "test/fixtures/search.xml",
-     "test/fixtures/status.xml",
-     "test/oauth_test.rb",
-     "test/test_helper.rb"
-  ]
+  s.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*', 'README*', 'LICENSE*'] & `git ls-files`.split("\n")
   s.homepage = %q{http://github.com/pengwynn/linkedin}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
