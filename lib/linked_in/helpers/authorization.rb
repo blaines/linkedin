@@ -12,7 +12,10 @@ module LinkedIn
       }
 
       def consumer
-        @consumer ||= ::OAuth::Consumer.new(@consumer_token, @consumer_secret, parse_oauth_options)
+        @consumer ||= begin
+          options = { :site => 'https://api.linkedin.com' }.merge(parse_oauth_options)
+          ::OAuth::Consumer.new(@ctoken, @csecret, options)
+        end
       end
 
       # Note: If using oauth with a web app, be sure to provide :oauth_callback.
@@ -32,6 +35,8 @@ module LinkedIn
 
       def access_token
         @access_token ||= ::OAuth::AccessToken.new(consumer, @auth_token, @auth_secret)
+        puts "AT: #{@access_token}" if @access_token        
+        @access_token
       end
 
       def authorize_from_access(atoken, asecret)
