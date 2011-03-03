@@ -21,9 +21,6 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Ruby wrapper for the LinkedIn API}
   s.test_files = [
-    "test/client_test.rb",
-     "test/oauth_test.rb",
-     "test/test_helper.rb",
      "examples/authenticate.rb",
      "examples/network.rb",
      "examples/profile.rb",
