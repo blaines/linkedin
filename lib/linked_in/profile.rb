@@ -41,6 +41,7 @@ module LinkedIn
     property :distance
     property :industry
     property :picture_url, :from => :pictureUrl
+    property :publications
     
     def connections
       @connections ||= self[:connections]['values'].map {|p| Profile.new(p)}
