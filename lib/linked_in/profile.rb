@@ -29,6 +29,7 @@ module LinkedIn
     property :summary
     property :proposal_comments, :from => :proposalComments
     property :current_status_timestamp, :from => :currentStatusTimestamp
+    property :current_status, :from => :currentStatus
     property :connections
     property :phone_numbers, :from => :phoneNumbers
     property :public_profile_url, :from => :publicProfileUrl
