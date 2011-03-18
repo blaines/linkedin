@@ -27,6 +27,7 @@ module LinkedIn
     property :recommendations_received, :from => :recommendationsReceived
     property :first_name, :from => :firstName
     property :summary
+    property :proposal_comments, :from => :proposalComments
     property :connections
     property :phone_numbers, :from => :phoneNumbers
     property :public_profile_url, :from => :publicProfileUrl
