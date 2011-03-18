@@ -31,6 +31,7 @@ module LinkedIn
     property :current_status_timestamp, :from => :currentStatusTimestamp
     property :current_status, :from => :currentStatus
     property :current_share, :from => :currentShare
+    property :skills
     property :connections
     property :phone_numbers, :from => :phoneNumbers
     property :public_profile_url, :from => :publicProfileUrl
