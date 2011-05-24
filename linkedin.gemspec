@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<hashie>,      ["~> 1.0.0"])
-      s.add_runtime_dependency(%q<multi_json>,  ["~> 0.0.5"])
+      s.add_runtime_dependency(%q<multi_json>,  ["~> 1.0.0"])
       s.add_runtime_dependency(%q<oauth>,       ["~> 0.4.0"])
       s.add_runtime_dependency(%q<nokogiri>,    ["~> 1.4.4"])
       s.add_development_dependency(%q<rspec>,   ["~> 2.4.0"])
